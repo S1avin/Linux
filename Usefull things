@@ -8,4 +8,4 @@ The general job control commands in Linux are:
     kill %[number] - Kill the job numbered [number]
     kill -[signal] %[number] - Send the signal [signal] to job number [number]
     disown %[number] - disown the process(no more terminal will be owner), so command will be alive even after closing the terminal.
-
+    ps - list of the current jobs with PID
