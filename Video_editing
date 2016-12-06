@@ -1,0 +1,12 @@
+
+# Mencoder 
+mencoder -ovc copy -oac copy *.avi -o Amergedvideo.avi
+
+# Avimerge 
+avimerge -i *.avi -o all.avi -c
+
+# Copy
+cp -R **/*.avi ~/vid
+
+# Find latest 
+ls -td -- */ | head -n 1
