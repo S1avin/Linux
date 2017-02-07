@@ -1,12 +1,31 @@
+import os
 
-# Mencoder 
-mencoder -ovc copy -oac copy *.avi -o Amergedvideo.avi
+folder_list = [] # All folders in camera folder
 
-# Avimerge 
-avimerge -i *.avi -o all.avi -c
+target_list = [] # Hourly folders in target
 
-# Copy
-cp -R **/*.avi ~/vid
+os.chdir('ftp/DCS5020L') # Place where I store my cam record
 
-# Find latest 
-ls -td -- */ | head -n 1
+folder_list = os.listdir('.') # Get the name of the folder, it depends of current date.
+
+target = folder_list[0] # Take it, now it become string
+
+os.chdir(target) # Going there
+
+target_list = os.listdir('.') # One folder for each hour.
+
+target_list.sort() # Readability, if I would like to read output.
+
+os.system('mkdir /home/2tb/final/'+ target) # My HDD
+
+for i in target_list: # Goign in each folder
+
+    i = str(i)
+    os.chdir(i)
+    os.system('mencoder -ovc copy -oac copy *.avi -o ' + i +'.avi') # encode the videos.
+    os.system('cp '+i+'.avi /home/2tb/final/'+ target) # copy in HDD
+    os.chdir('..') # Going back
+
+os.chdir('..') # Going more back
+
+os.system('rm -r ' + target) # vanishing data from my current SSD
