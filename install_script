@@ -1,0 +1,2 @@
+sudo apt update && sudo apt upgrade
+sudo apt install gedit mencoder htop curl chromium-browser easy-rsa gcc hddtemp git openssh-server python3.6 python3.6-dev webmin vsftpd virtualbox
